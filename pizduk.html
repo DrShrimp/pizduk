@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
+    <title>Узнай, кто ты есть</title>
+    <style>
+        body {background-color: hsl(236, 70%, 7%);}
+        h1, h4 {text-align: center; color: white; font-family: "Roboto"; font-weight: 300;}
+        p, label, fieldset {color: hsl(0, 0%, 70%); text-align: center; font-family: "Noto Sans TC";}
+        input {color: hsl(0, 0%, 10%);}
+        input {display: block; margin: 1rem auto; border-radius: 5px; height: 1rem; padding: 5px;}
+        #male, #female, #nosex, #smart, #halfsmart, #nosmart {display: inline-block; margin: 0 0.5rem;}
+        #name, #age, #work {height: 1.5rem;}
+        #button {padding: 0.5rem; background-color: hsl(18, 60%, 45%); color: white; height: auto; font-family: "Roboto"; font-weight: 700;}
+        #button:hover {background-color: hsl(18, 60%, 35%)}
+    </style>
+</head>
+<body>
+    <h1>Заполни анкету и познай свою истинную суть</h1>
+    <h4>Для получения точной информации аккуратно и полностью заполните форму ниже:</h4>
+    <fieldset>
+    <p><label for="name">Имя, пожалуйста:</label><br>
+    <input type="text" id="name" name="name" placeholder="Меня зовут..." /></p>
+    
+    <p>Пол:</p>
+    <input type="radio" name="sex" id="male" value="male" checked/> Мужской
+    <input type="radio" name="sex" id="female" value="female" /> Женский
+    <input type="radio" name="sex" id="nosex" value="nosex" /> Никакой
+
+    <p><label for="age">Сколько полных лет коптишь воздух?</label>
+    <input type="number" id="age" name="age" /></p>
+
+    <p><label for="work">Кто по жизни?</label>
+    <input type="text" id="work" name="work" placeholder="Я..." /></p>
+
+    <p>Умственные способности?</p>
+    <input type="radio" name="smart" id="smart" value="smart" /> Умный
+    <input type="radio" name="smart" id="halfsmart" value="half-smart" checked/> Не особо умный
+    <input type="radio" name="smart" id="nosmart" value="nosmart" /> Ракета. Тупорылая ракета
+
+    <p><input type="submit" value="Узнать!" id="button" onclick="inputText(this.name, this.male, this.female, this.nosex, this.age, this.work, this.smart, this.halfsmart, this.nosmart);"/></p>
+</fieldset>
+
+    <div id="outputText">
+        
+    </div>
+    
+        
+    <script type="text/javascript">
+
+
+                        let old;
+                       let mental;
+                       let pizduk;
+
+              function inputText(name, male, female, nosex, age, work, smart, halfsmart, nosmart) {
+           
+                       name = document.getElementById("name").value;
+                       age = document.getElementById("age").value;
+                       work = document.getElementById("work").value;
+                       male = document.getElementById("male");
+                       female = document.getElementById("female");
+                       nosex = document.getElementById("nosex");
+                       smart = document.getElementById("smart");
+                       halfsmart = document.getElementById("halfsmart");
+                       nosmart = document.getElementById("nosmart");
+
+                       //MALE
+
+                        if (male.checked){
+                            if (age < 18){
+                                pizduk = "пиздюченок"
+                                old="малолетний";
+                                if(smart.checked){mental = "умненький"};
+                                if(halfsmart.checked){mental = "не особо умненький"};
+                                if(nosmart.checked){mental = "тупенький"};
+                            }
+                            if (age >= 18 && age <= 70){
+                                old="взрослый";
+                                pizduk = "пиздюк"
+                                if(smart.checked){mental = "шибко умный"};
+                                if(halfsmart.checked){mental = "умеренно умный"};
+                                if(nosmart.checked){mental = "тупой"};
+                            }
+                            if (age > 70){
+                                old="великовозрастный";
+                                pizduk = "пиздюк"
+                                if(smart.checked){mental = "дохера умный и опытный"};
+                                if(halfsmart.checked){mental = "полутупой"};
+                                if(nosmart.checked){mental = "тупорылый"};
+                            }
+                        };
+
+                        //FEMALE
+                       
+                        if (female.checked){
+                            if (age < 18){
+                                pizduk = "пиздюченька"
+                                old="малолетняя";
+                                if(smart.checked){mental = "умненькая"};
+                                if(halfsmart.checked){mental = "не особо умненькая"};
+                                if(nosmart.checked){mental = "тупенькая"};
+                            }
+                            if (age >= 18 && age <= 70){
+                                old="взрослая";
+                                pizduk = "пиздючина"
+                                if(smart.checked){mental = "шибко умная"};
+                                if(halfsmart.checked){mental = "умеренно умная"};
+                                if(nosmart.checked){mental = "тупая"};
+                            }
+                            if (age > 70){
+                                old="великовозрастная";
+                                pizduk = "пи(милая женщина)зда"
+                                if(smart.checked){mental = "дохера умная и опытная"};
+                                if(halfsmart.checked){mental = "полутупая"};
+                                if(nosmart.checked){mental = "тупорылая"};
+                            }
+                        };
+
+                        //NO SEX
+
+                        if (nosex.checked){
+                            if (age < 18){
+                                pizduk = "пиздюченьце"
+                                old="малолетнее";
+                                if(smart.checked){mental = "умненькое"};
+                                if(halfsmart.checked){mental = "не особо умненькое"};
+                                if(nosmart.checked){mental = "тупенькое"};
+                            }
+                            if (age >= 18 && age <= 70){
+                                old="взрослое";
+                                pizduk = "пиздючко"
+                                if(smart.checked){mental = "шибко умное"};
+                                if(halfsmart.checked){mental = "умеренно умное"};
+                                if(nosmart.checked){mental = "тупое"};
+                            }
+                            if (age > 70){
+                                old="великовозрастное";
+                                pizduk = "невнятное пиздючище"
+                                if(smart.checked){mental = "дохера умное и опытное"};
+                                if(halfsmart.checked){mental = "полутупое"};
+                                if(nosmart.checked){mental = "тупорылое"};
+                            }
+                        };
+
+                        
+
+          
+                       document.getElementById("outputText").innerHTML = `<h1>Итоги подведем...</h1>
+                                                                        <p>Тебя зовут ${name}, тебе ${age}, ты ${work}, и, самое главное, <strong>ты ${old} ${mental} ${pizduk}!</strong></p>`;
+                                                                        
+              }
+           
+      </script>
+    
+</body>
+</html>

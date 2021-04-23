@@ -17,6 +17,15 @@
         #name, #age, #work {height: 1.5rem;}
         #button {padding: 0.5rem; background-color: hsl(18, 60%, 45%); color: white; height: auto; font-family: "Roboto"; font-weight: 700;}
         #button:hover {background-color: hsl(18, 60%, 35%)}
+        footer {color: hsl(0, 0%, 50%); text-align: center;}
+        #text-container {display:none; position:fixed; width:50%; height:auto; top: 40%; left: 50%; transform: translate(-50%, 0); background-color: hsl(100, 30%, 20%); box-sizing: border-box; border: 1px solid white;}
+        #close {position: absolute;  top: 0.5rem; right: 1rem; color:hsl(0, 0%, 70%); font-size: 0.5rem;}
+        #close:hover {color: hsl(0, 0%, 95%); cursor: pointer;}
+        #outputText {padding: 0.5rem;}
+        
+        @media screen and (max-width: 688px){
+            #smart, #halfsmart, #nosmart {display: block; margin: 0 auto;}
+        }
     </style>
 </head>
 <body>
@@ -39,19 +48,25 @@
 
     <p>Умственные способности?</p>
     <input type="radio" name="smart" id="smart" value="smart" /> Умный
-    <input type="radio" name="smart" id="halfsmart" value="half-smart" checked/> Не особо умный
+    <input type="radio" name="smart" id="halfsmart" value="half-smart" checked/> Не особо
     <input type="radio" name="smart" id="nosmart" value="nosmart" /> Ракета. Тупорылая ракета
 
     <p><input type="submit" value="Узнать!" id="button" onclick="inputText(this.name, this.male, this.female, this.nosex, this.age, this.work, this.smart, this.halfsmart, this.nosmart);"/></p>
 </fieldset>
-
+ <div id="text-container">
+     <p id="close" onclick="closeResult()">ЗАКРЫТЬ</p>
     <div id="outputText">
         
     </div>
+</div>
     
-        
+    <footer><small>&copy 2021 Dr.Shrimp Dev. All Rights Reserved.</small></footer> 
     <script type="text/javascript">
-
+    function closeResult(){
+        document.getElementById("text-container").style.display = "none";
+        document.getElementById("outputText").innerHTML = "";
+                                                                        
+    }
 
                         let old;
                        let mental;
@@ -148,10 +163,11 @@
                         };
 
                         
-
+                        
           
                        document.getElementById("outputText").innerHTML = `<h1>Итоги подведем...</h1>
                                                                         <p>Тебя зовут ${name}, тебе ${age}, ты ${work}, и, самое главное, <strong>ты ${old} ${mental} ${pizduk}!</strong></p>`;
+                                                                        document.getElementById("text-container").style.display = "block";
                                                                         
               }
            
